@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/ready_anim.css">
+    <link rel="stylesheet" href="./css/score_popup.css">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5e76869afac6be0012fa5e6f&product=inline-share-buttons&cms=sop' async='async'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="assets/ch.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="assets/md.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+<body>
+    <audio id="loop_sound" loop autoplay src="assets/sounds/loop_low.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+    <script>
+        $("#loop_sound")[0].volume = 0.05;
+    </script>
+    <audio id="main_theme_sound" src="assets/sounds/main_theme.mp3">
+        Your browser does not support the
+        <code>audio</code> element.
+    </audio>
+    <header id="ix49" class="header-banner">
+        <img id="Corona_header" src='assets/images/Corona_blue.png'/>
+        <div id="ib8d" class="container-width">
+            <div id="iug5" class="logo-container">
+                <div id="ivkc15" class="logo">Catch me if u can&nbsp;!</div>
+            </div>
+            <div class="clearfix">
+            </div>
+            <div id="ip9kql" class="lead-title">Need a 5 minutes break to wake up&nbsp;?</div>
+            <div class="lead-title" id="ipb1yg">Game goal</br>Tap the Coronavirus as soon as it appears.</br>You have 60 seconds to catch as most as you can&nbsp;!</div>
+            <div class="logo-container" id="i2130s"></div>
+            <div class="logo-container" id="i94aqz">
+           <!-- <a href="#gcan" style='text-decoration:none;'>-->
+                <div class="lead-btn" id="ipz4tu">
+                    <span style="margin:auto;font-weight:bold;">Play</span>
+                    <img src="assets/images/play-circle.svg" style="margin:auto;height:40px;width:40px;"/></div>
+            <!--</a>-->
+            </div>
+        </div>
+    </header>
+    <section class="flex-sect" id="iygjpl">
+    <div id="gcan">
+        <div class="popup">
+            <div class="congrats_hold" style="height:10%;width:100%;">
+                <div data-shadow='Awesome!' class="congrats tada delay-1s slow" id="c_msg">Awesome!</div>
+            </div>
+            <div class="stats" id="game_stats" style="height:50%;width:100%;display:flex;flex-wrap: wrap;">
+                <div class="stats_tp" id="stats_tp">
+                    <span class="animated pulse infinite slow" id="nb_kv" style="display: inline-block;font-size:40px;font-weight:bold;color:white;">150</span>
+                     killed viruses
+                </div>
+                <div class="stats_tpt" id="stats_tpt">
+                    <span class="animated pulse infinite slow" id="art_kv" style="display: inline-block;font-size:26px;font-weight:bold;color:white;">0.15</span> s
+                    <span style="font-size:16px;">(avg. reaction time)</span>
+                </div>
+                <div class="stats_p" id="stats_lp">
+                <div class="stats_pp" id="stats_lpt">
+                 <div class="stats_ppp" id="stats_lptr">
+                     <div class="stats_pppt" id="stats_lptrt">
+                        44
+                     </div>
+                     <div class="stats_pppb" id="stats_lptrb">
+                        /60
+                     </div>
+                 </div>
+                 <div class="stats_ppp" id="stats_lptl">
+                    <img id="bv_sc_img" src='assets/images/Corona_blue.png'/>
+                </div>
+                </div>
+                <div class="stats_pp" id="stats_lpb">
+                    <div class="stats_ppp" id="stats_lpbr">
+                        <div class="stats_pppt" id="stats_lpbrt">
+                            44
+                         </div>
+                         <div class="stats_pppb" id="stats_lpbrb">
+                            /60
+                         </div>
+                    </div>
+                    <div class="stats_ppp" id="stats_lpbl">
+                        <img id="rv_sc_img" src='assets/images/Corona_red.png'/>
+                    </div>
+                </div>
+                </div>
+                <div class="stats_p" id="stats_rp">
+                    <div class="stats_pp" id="stats_rpt">
+                        <div id="stats_rpt_n">
+                            3.15 s
+                        </div>
+                    </div>
+                    <div class="stats_pp" id="stats_rpb">
+                        <div id="stats_rpb_n">
+                            3.15 s
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rt_plots" id="rt_plots"></div>
+            <div class="sharethis-inline-share-buttons"></div>
+            <div class="more_stats" id="more_stats" style="height:40%;width:100%;"></div>
+        </div>
+        <div id="top_game_banner" style="position:relative;z-index:2;top:0;margin-left:auto;
+        margin-right:auto;height:60px;background:rgb(240,240,240);border-radius: 0 0 20px 20px;
+        box-shadow:0 1px 6px 0 rgba(240, 240, 240, .28);">
+            <img src="assets/images/redo-alt.svg" id="retry_btn" style="position:absolute;z-index:5;top:10px;left:10px;height:40px;width:40px;"/>
+            <div id="live_score" class="infinite heartBeat delay-2s slow" style="position:absolute;z-index:5;left:0;width:140px;text-align:center;height:40px;line-height:40px;
+            top:10px;right:0;margin-left:auto;margin-right:auto;display:inline-block;color:rgb(240,240,240); border-radius:20px;
+            background:#32386D;box-shadow:0 1px 6px 0 rgba(30, 30, 30,0.28);font-size:30px;font-weight:bold;">00000</div>
+            <div id="timer_div" style="position:absolute;z-index:5;top:5px;right:5px;"></div>
+        </div>
+    </div>
+    <script>
+        $("#gcan").css({"height": $(window).height()+"px"});
+        $("#top_game_banner").css({"width": Math.min($(window).width(),300)+"px"});
+    </script>
+    </section>
+
+</body>
+<script src="assets/timer.js"></script>
+<script src="assets/results_calc.js"></script>
+<script>
+var anim_code =`<div class="ready_anim">
+  <div class="ready_anim__colored-blocks">
+    <div class="ready_anim__colored-blocks-rotater">
+      <div class="ready_anim__colored-block"></div>
+      <div class="ready_anim__colored-block"></div>
+      <div class="ready_anim__colored-block"></div>
+    </div>
+    <div class="ready_anim__colored-blocks-inner"></div>
+    <div class="ready_anim__text">Ready</div>
+  </div>
+  <div class="ready_anim__inner">
+    <svg class="ready_anim__numbers" viewBox="0 0 100 100">
+      <defs>
+        <path class="ready_anim__num-path-1" d="M40,28 55,22 55,78"/>
+        <path class="ready_anim__num-join-1-2" d="M55,78 55,83 a17,17 0 1,0 34,0 a20,10 0 0,0 -20,-10"/>
+        <path class="ready_anim__num-path-2" d="M69,73 l-35,0 l30,-30 a16,16 0 0,0 -22.6,-22.6 l-7,7"/>
+        <path class="ready_anim__num-join-2-3" d="M28,69 Q25,44 34.4,27.4"/>
+        <path class="ready_anim__num-path-3" d="M30,20 60,20 40,50 a18,15 0 1,1 -12,19"/>
+      </defs>
+      <path class="ready_anim__numbers-path" 
+            d="M-10,20 60,20 40,50 a18,15 0 1,1 -12,19 
+               Q25,44 34.4,27.4
+               l7,-7 a16,16 0 0,1 22.6,22.6 l-30,30 l35,0 L69,73 
+               a20,10 0 0,1 20,10 a17,17 0 0,1 -34,0 L55,83 
+               l0,-61 L40,28" />
+    </svg>
+  </div>
+</div>`;
+
+
+window._bv_h = $(window).height()/15;
+window._rv_h = $(window).height()/20;
+var bh = parseFloat(($("#top_game_banner").css("height")).replace("px",""));
+var v_xs = {};
+var v_ys = {};
+var lzi = 10;
+var GameDuration = 60;
+var Initial_timestamp = 0;
+var fl = true;
+var interrupted_game = false;
+var stopClick=false;
+var cpt = 0;
+TIME_LIMIT = 60;
+var score = 0;
+var bv_sc = 1.0;
+var rv_sc = 2.0;
+var b_vc = {};
+var r_vc = {};
+var b_vd = {};
+var r_vd = {};
+
+$("#bv_sc_img").css({"width":window._bv_h+"px","margin":"auto"});
+$("#rv_sc_img").css({"width":window._rv_h+"px","margin":"auto"});
+
+function preloadImage(url){
+    var img=new Image();
+    img.src=url;
+}
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+function disableScroll() { 
+    // Get the current page scroll position 
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop; 
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, 
+  
+        // if any scroll is attempted, set this to the previous value 
+        window.onscroll = function() { 
+            window.scrollTo(scrollLeft, scrollTop); 
+        }; 
+} 
+  
+function enableScroll() { 
+    window.onscroll = function() {}; 
+}
+
+function update_clock(timestamp){
+}
+
+function cv(){
+    var r = Math.random();
+    var r2 = Math.random();
+    var r3 = Math.random();
+    var r4 = Math.random();
+    var wh = parseFloat(($("#gcan").css("height")).replace("px",""));
+    var ww = parseFloat(($("#gcan").css("width")).replace("px",""));
+    var c = document.createElement("img");
+    c.classList.add("vir");
+    lzi++;
+    c.id = lzi;
+    if (r< 0.5) {
+        c.src = 'assets/images/Corona_red.png';
+        c.classList.add("rv");
+        var h = window._rv_h;
+        r_vc[c.id] = (new Date()).getTime() ;
+    } else {
+        c.src = 'assets/images/Corona_blue.png';
+        c.classList.add("bv");
+        var h = window._bv_h;
+        b_vc[c.id] = (new Date()).getTime();
+    };
+    $(c).css({"position" : "absolute",
+    "top" : (bh+(r2 * (wh-h-bh)))+"px",
+    "left" : (r3 * (ww-h))+"px",
+    "height" : h+"px",
+    "width" : h+"px",
+    "z-index" : lzi});
+    $("#gcan").append($(c));
+}
+
+async function start_newgame(){
+    $("#main_theme_sound")[0].play();
+    $("#main_theme_sound")[0].volume = 0.1;
+    fl=true;
+    $("#gcan .vir").remove();
+    $(".popup").css({"display":"none","opacity":"0"});
+    $('#base-timer-label').html(formatTime(TIME_LIMIT));
+    timeLeft = TIME_LIMIT;
+    timePassed = 0;
+    timerInterval = null;
+    remainingPathColor = COLOR_CODES.info.color;
+    score = 0;
+    b_vc = {};
+    r_vc = {};
+    b_vd = {};
+    r_vd = {};
+    $("#gcan").append(anim_code);
+    await new Promise(r => setTimeout(r, 3500));
+    $("#gcan .ready_anim").remove();
+    await new Promise(r => setTimeout(r, 500));
+    $('body').on('click','.vir',function(){
+        if ($(this).hasClass('bv')){
+            var loc_t = (new Date()).getTime();
+            var loc_dt = loc_t - b_vc[this.id];
+            b_vd[this.id] = loc_t;
+            score += Math.ceil(bv_sc *(10000.0/loc_dt));
+        } else {
+            var loc_t = (new Date()).getTime();
+            var loc_dt = loc_t - r_vc[this.id];
+            r_vd[this.id] = loc_t;
+            score += Math.ceil(rv_sc *(10000.0/loc_dt));
+        }
+        $("#live_score").html(score.toString().padStart(5,'0'));
+        $(this).remove();});
+
+    disableScroll();
+    cpt=0;
+    stop_gameloop = true;
+    interrupted_game = false;
+    window.requestAnimationFrame(gameLoop);
+    //setInterval(function(){ cv(); }, 600);
+}
+
+$('#ipz4tu').click(async function() {
+if(stopClick) return;
+stopClick = true;
+$(window).scrollTo($("#gcan"));
+await start_newgame();
+stopClick = false;
+});
+
+$('#retry_btn').click(async function() {
+if(stopClick) return;
+stopClick = true;
+stop_gameloop=true;
+interrupted_game = true;
+clearTimeout(timerInterval);
+$(window).scrollTo($("#gcan"));
+$('#live_score').removeClass("animated");
+$('#c_msg').removeClass("animated");
+$("#live_score").html("0".padStart(5,'0'));
+$("#main_theme_sound")[0].pause();
+$("#main_theme_sound")[0].currentTime = 0;
+await new Promise(r => setTimeout(r, 500));
+await start_newgame();
+stopClick = false;
+});
+
+preloadImage('assets/images/Corona_red.png');
+preloadImage('assets/images/Corona_blue.png');
+function gameLoop(timestamp) {
+    if (fl == true) {
+        Initial_timestamp = timestamp;
+        fl = false;
+        stop_gameloop=false;
+        startTimer();
+    } else {}
+    if (cpt % 25 ==0){
+        cv();
+        var rl = Math.random();
+        if ((rl > 0.85) && (rl < 0.98)){
+            //cv();
+            cv();
+            } else {
+                if (rl > 0.98) {
+                    //cv();
+                    cv();
+                    cv();
+                    } else {}
+                }
+    } else {}
+    update_clock(timestamp);
+    cpt++;
+    if (!stop_gameloop){
+    window.requestAnimationFrame(gameLoop);} else {
+        $('body').off('click','.vir');
+        enableScroll();
+        if (!interrupted_game){
+        show_cmsg(score);
+        $('#live_score').addClass("animated");
+        $('#c_msg').addClass("animated");
+        $(".popup").css({"display":"inline-block"});
+        $(".popup").animate({"opacity": "1"}, 1500);
+        calc_results(b_vc,b_vd,r_vc,r_vd,score);} else {}
+    }
+}
+</script>
+<html>

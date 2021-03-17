@@ -1,0 +1,221 @@
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap);
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    scroll-behavior: smooth;
+    font-family: 'Righteous'
+}
+
+.clearfix {
+    clear: both
+}
+
+.header-banner {
+    backdrop-filter: blur(3px);
+    padding-top: 35px;
+    padding-bottom: 100px;
+    color: #fff;
+    font-weight: 100;
+    background: #232323;
+}
+
+.container-width {
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto
+}
+
+.logo-container {
+    float: left;
+    width: 100%;
+}
+
+.logo {
+    font-family: 'Permanent Marker', cursive;
+    border-radius: 5px;
+    width: 130px;
+    padding: 10px;
+    min-height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 30px
+}
+
+.lead-title {
+    margin: 150px 0 30px 0;
+    font-size: 40px
+}
+
+.lead-btn {
+    margin-top: 15px;
+    padding: 10px;
+    width: 190px;
+    min-height: 30px;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 3px;
+    line-height: 30px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    transition: all .5s ease;
+    cursor: pointer;
+    color: #232323;
+    display: flex;
+}
+
+.lead-btn:hover {
+    background-color: #fff;
+    color: #4c114e
+}
+
+.lead-btn:active {
+    background-color: #4d114f;
+    color: #fff
+}
+
+.flex-sect {
+    background-color: #fafafa;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0
+}
+
+#ib8d {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+#iug5 {
+    float: left;
+    display: flex;
+    justify-content: center
+}
+
+#ip9kql {
+    margin: 30px 0 30px 0;
+    text-align: center;
+}
+
+#ivkc15 {
+    width: auto;
+    text-shadow: 1px 1px 2px #f52916, 0 0 1em #f52916;
+}
+
+#ipb1yg {
+    margin: 0;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 1px 1px 2px blue, 0 0 1em blue;
+}
+
+#ipz4tu {
+    border-radius: 20px
+}
+
+#i2130s {
+    float: left;
+    display: flex;
+    justify-content: center
+}
+
+#i94aqz {
+    float: left;
+    display: flex;
+    justify-content: space-around
+}
+
+#gcan {
+    background: radial-gradient(#232323, #000);
+    width: 100%;
+    position: relative;
+}
+
+.base-timer {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.base-timer__svg {
+    transform: scaleX(-1);
+}
+
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+.base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+}
+
+.base-timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+}
+
+.base-timer__path-remaining.green {
+    color: rgb(65, 184, 131);
+}
+
+.base-timer__path-remaining.orange {
+    color: orange;
+}
+
+.base-timer__path-remaining.red {
+    color: red;
+}
+
+.base-timer__label {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+#Corona_header {
+    width: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: -1;
+    transform: translatey(0px);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
